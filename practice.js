@@ -15,18 +15,18 @@ class Event {
             this.getEndMinutes() <= other.getStartMinutes()
           );
       }
-      getStartHours() {
-        return Number(this.startTime.split(":")[0]);
-      }
-      getStartMinutes() {
-        return Number(this.startTime.split(":")[1]);
-      }
-      getEndHours() {
-        return Number(this.endTime.split(":")[0]);
-      }
-      getEndMinutes() {
-        return Number(this.endTime.split(":")[1]);
-      }
+      get startHours() {
+            return Number(this.startTime.split(":")[0]);
+          }
+          get startMinutes() {
+            return Number(this.startTime.split(":")[1]);
+         }
+          get endHours() {
+            return Number(this.endTime.split(":")[0]);
+          }
+          get endMinutes() {
+            return Number(this.endTime.split(":")[1]);
+          }
   }
 const lunchEvent = new Event("Lunch", "12:00", "13:00", "Chipotle");
 const meeting = new Event("Meeting", "14:00", "15:30", "Conference room");
