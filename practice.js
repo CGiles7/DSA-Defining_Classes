@@ -1,3 +1,7 @@
 class Event {
-    // TODO
+    constructor() {
+      console.log("Calling the constructor function!");
+    }
   }
+  
+  new Event();
