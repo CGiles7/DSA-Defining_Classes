@@ -9,7 +9,36 @@ class Event {
         const { name, startTime, endTime, location } = this;
         return `${startTime} - ${endTime}: ${name} at ${location}`;
       }
+      isBefore(other) {
+        return this.getEndHours() < other.getStartHours() || (
+            this.getEndHours() === other.getStartHours() &&
+            this.getEndMinutes() <= other.getStartMinutes()
+          );
+      }
+      getStartHours() {
+        return Number(this.startTime.split(":")[0]);
+      }
+      getStartMinutes() {
+        return Number(this.startTime.split(":")[1]);
+      }
+      getEndHours() {
+        return Number(this.endTime.split(":")[0]);
+      }
+      getEndMinutes() {
+        return Number(this.endTime.split(":")[1]);
+      }
   }
+const lunchEvent = new Event("Lunch", "12:00", "13:00", "Chipotle");
+const meeting = new Event("Meeting", "14:00", "15:30", "Conference room");
 
-  const lunchEvent = new Event("Lunch", "12:00", "13:00", "Chipotle");
-console.log(lunchEvent.toString()); // > 12:00 - 13:00: Lunch at Chipotle
+
+console.log(lunchEvent.getStartHours()); // > 12
+console.log(lunchEvent.getStartMinutes()); // > 0
+
+console.log(lunchEvent.getEndHours()); // > 13
+console.log(lunchEvent.getEndMinutes()); // > 0
+
+
+console.log(lunchEvent.isBefore(meeting)); //> true
+console.log(meeting.isBefore(lunchEvent)); // > false
+console.log(lunchEvent.isBefore(lunchEvent)); // > false
