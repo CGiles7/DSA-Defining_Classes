@@ -1,7 +1,11 @@
 class Event {
-    constructor() {
-      console.log("Calling the constructor function!");
+    constructor(name, startTime, endTime, location) {
+      this.name = name;
+      this.startTime = startTime;
+      this.endTime = endTime;
+      this.location = location;
     }
   }
-  
-  new Event();
+
+  const lunch = new Event("Lunch", "12:00", "13:00", "Chipotle");
+console.log(lunch);
